@@ -1,0 +1,13 @@
+<section class="productinfo">
+    <div class="product cf" ng-model="product">
+        <h1>Product Description for {{item.category_name_1}} | {{item.name}}</h1>
+        <div class="info">
+            <h3>Product ID{{item.id}}</h3>
+            <img ng-src="{{item.assets[0].source}}" alt="Photo of {{item.name}}" class="productImage">
+            <br/><br/>
+            <div class="bio">{{item.description}}</div><br/><br/>
+            <h3>Status of the item is {{item.status}}</h3>
+        </div>
+        <a href="#/list" >&laquo; Click her to search</a>
+    </div>
+</section>

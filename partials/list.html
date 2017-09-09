@@ -1,0 +1,54 @@
+<span class="productsPage">
+    <div class = "banner">
+        <img ng-src="{{artists.clientLogo}}" alt="Photo of {{item.name}}" id="logo">
+        <input type="text" ng-model="productname" placeholder="Search for a product" class="inputbox">
+        <button class="btn btn-success" id="excelink"><a href="{{artists.excelFilePath}}" download="ClientExcel.xlsx">
+         <span style="color: white">Download Excel</span></a></button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-shopping-cart" style="color: white">Cart</span></button>
+    </div>
+
+
+    <div>
+        <ul class="artistlist">
+            <li ng-animate="'animate'" class="col-sm-3 product" ng-repeat="item in artists.items | filter:productname" id="child">
+                <a href="#/details/{{artists.items.indexOf(item)}}">
+                <div align="center" style="margin: 30px; border: 2px;">
+                    <div align="center">
+                        <img ng-src="{{item.assets[0].source}}" alt="Photo of {{item.name}}" ><br/><br/>
+                    </div>
+                    <h5>{{item.category_name_1}} | {{item.number}}</h5><br/>
+                </a>
+                <button type="button" class="btn btn-xs" ng-click="addItem(item)">
+                        <span class="glyphicon glyphicon-shopping-cart" ></span> Add to Cart
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Items in your cart</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group" ng-repeat="item in list">
+                        <a  class="list-group-item">{{item.category_name_1}} | {{item.number}}
+                            <button class="glyphicon glyphicon-remove" ng-click="removeItem(item)"></button>
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
